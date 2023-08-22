@@ -1,8 +1,15 @@
 import React from 'react'
+import {Col, Row, Container} from 'react-bootstrap'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer>
+    <Container>
+      <Row>
+        <Col className="text-center py-3">Copyright &copy; Event Hub</Col>
+      </Row>
+    </Container>
+  </footer>
   )
 }
 

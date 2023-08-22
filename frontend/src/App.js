@@ -1,13 +1,18 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import {Container} from 'react-bootstrap'
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header/>
-      <h1>eventHub</h1>
-      <Footer/>
-    </div>
+        <main>
+          <Container>
+            Welcome to Event Hub!
+          </Container>
+        </main>
+      <Footer/>  
+    </>
   );
 }
 
