@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import {Container} from 'react-bootstrap'
+import {Container} from 'react-bootstrap';
+import HomeScreen from './screens/HomeScreen';
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <Header/>
         <main>
           <Container>
-            Welcome to Event Hub!
+            <HomeScreen/>
           </Container>
         </main>
       <Footer/>  
