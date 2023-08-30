@@ -7,7 +7,7 @@ const Event = ({event}) => {
   return (
     <Card className='my-3 p-3 rounded'>
       <Link to={`/event/${event._id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img src={event.image} variant='top' />
       </Link>
       <Card.Body>
         <Link to={`/event/${event._id}`}>
