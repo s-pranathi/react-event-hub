@@ -16,9 +16,11 @@ const Event = ({event}) => {
           </Card.Title>
         </Link>
         <Card.Text as='div'>
-          <Participant value={event.participant} />
+        <Participant value={event.participant} />
         </Card.Text>
-
+        <Card.Text as='div'>
+        {`${event.countInStock} Tickets Left`}    
+            </Card.Text>
         <Card.Text as='h3'>
           ${event.price}
         </Card.Text>
