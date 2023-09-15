@@ -9,7 +9,7 @@ const events = [
       price: 75,
       venue: 'Dolby Theater',
       countInStock: 200,
-      participants: 100,
+      participant: 100,
     },
     {
         _id: '2',
@@ -21,7 +21,7 @@ const events = [
         price: 125,
         venue: 'Grace Park',
         countInStock: 250,
-        participants: 200,
+        participant: 200,
     },
     {
         _id: '3',
@@ -33,7 +33,7 @@ const events = [
         price: 15,
         venue: 'Hugh Community Center',
         countInStock: 100,
-        participants: 2,
+        participant: 2,
       
   },
   {
@@ -46,7 +46,7 @@ const events = [
     price: 0,
     venue: 'Rock Creek Park',
     countInStock: 50,
-    participants: 15,
+    participant: 15,
   },
   {
     _id: '5',
@@ -58,7 +58,7 @@ const events = [
     price: 275,
     venue: 'Audi Stadium',
     countInStock: 400,
-    participants: 175,
+    participant: 175,
   },
   {
     _id: '6',
@@ -70,7 +70,7 @@ const events = [
     price: 25,
     venue: 'Grant Hall-UMD',
     countInStock: 40,
-    participants: 30,
+    participant: 30,
   },
   {
     _id: '7',
@@ -82,7 +82,7 @@ const events = [
     price: 13,
     venue: 'Mosaic part',
     countInStock: 75,
-    participants: 70,
+    participant: 70,
   },
   {
     _id: '8',
@@ -94,8 +94,8 @@ const events = [
     price: 0,
     venue: 'Lola Community Center',
     countInStock: 30,
-    participants: 15,
+    participant: 15,
   },
 ]
 
-export default events
+module.exports = events
