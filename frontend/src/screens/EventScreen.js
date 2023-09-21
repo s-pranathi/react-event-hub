@@ -1,11 +1,22 @@
+import React, {useEffect, useState} from 'react';
 import { useParams, Link } from "react-router-dom";
 import { Row, Col, Image, Card, Button, ListGroup } from "react-bootstrap";
-import events from "../events";
-import './EventScreen.css'
+import './EventScreen.css';
+import axios from 'axios';
+
 
 const EventScreen = () => {
   const params = useParams();
-  const event = events.filter((event) => event._id === params.id);
+  const [event, setEvent] = useState({})
+
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const {data} = await axios.get(`/api/event/${params.id}`)
+      setEvent(data)
+    }
+    fetchEvent()
+  })
+
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
