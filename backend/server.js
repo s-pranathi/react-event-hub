@@ -1,7 +1,13 @@
-const events = require('./data/events')
-const express = require('express')
+import express from 'express'
+import events from './data/events.js'
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
+
 
 const app = express()
+dotenv.config()
+connectDB()
+
 
 app.get('/api/events',(req, res)=>{
     res.json(events)
