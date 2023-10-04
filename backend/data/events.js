@@ -1,6 +1,5 @@
 const events = [
     {
-      _id: '1',
       name: 'Maggie Rogers Live',
       image: '/images/maggie.jpeg',
       description:
@@ -12,7 +11,6 @@ const events = [
       participant: 100,
     },
     {
-        _id: '2',
         name: 'BBQ Battle',
         image: '/images/bbq.jpeg',
         description:
@@ -24,7 +22,6 @@ const events = [
         participant: 200,
     },
     {
-        _id: '3',
         name: 'Bingo Night',
         image: '/images/bingo.png',
         description:
@@ -37,7 +34,6 @@ const events = [
       
   },
   {
-    _id: '4',
     name: 'Volleyball Tournamet',
     image: '/images/volley.jpeg',
     description:
@@ -49,7 +45,6 @@ const events = [
     participant: 15,
   },
   {
-    _id: '5',
     name: 'Womens National Team Soccer Match vs Spain',
     image: '/images/soccerball.jpeg',
     description:
@@ -61,7 +56,6 @@ const events = [
     participant: 175,
   },
   {
-    _id: '6',
     name: 'Coding Bootcamp',
     image: '/images/coding.jpeg',
     description:
@@ -73,7 +67,6 @@ const events = [
     participant: 30,
   },
   {
-    _id: '7',
     name: 'Marvel Screening - Ant Man',
     image: '/images/marvel.png',
     description:
@@ -85,7 +78,6 @@ const events = [
     participant: 70,
   },
   {
-    _id: '8',
     name: 'Board Game Night',
     image: '/images/boardgames.jpeg',
     description:
