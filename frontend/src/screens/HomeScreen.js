@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { listEvents } from "../actions/eventActions";
 import { Col, Row } from "react-bootstrap";
-import axios from "axios";
 import Event from "../components/Event";
 
 const HomeScreen = () => {
-  const [events, setEvents] = useState([]);
+
+  const dispatch = useDispatch()
+  const eventList = useSelector((state) => state.eventList)
+  const {loading, events, error} = eventList
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const { data } = await axios.get("/api/events");
-      setEvents(data);
-    };
-    fetchEvents();
+    dispatch(listEvents(), [dispatch])
   });
 
   return (
@@ -19,7 +19,7 @@ const HomeScreen = () => {
       <h1>Latest Events</h1>
       <Row>
         {events.map((e) => (
-          <Col sm={12} md={6} lg={4} xl={3}>
+          <Col key={e._id} sm={12} md={6} lg={4} xl={3}>
             <Event event={e} />
           </Col>
         ))}
