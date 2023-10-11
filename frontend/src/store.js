@@ -1,12 +1,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { eventDetailsReducer, eventListReducer } from "./reducers/eventReducers";
-import { userLoginReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 import { cartReducer } from "./reducers/cartReducers";
 
 const rootReducer = combineReducers({
   eventList: eventListReducer,
   eventDetails: eventDetailsReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
   cart: cartReducer
 });
 
