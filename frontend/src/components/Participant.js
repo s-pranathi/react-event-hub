@@ -54,7 +54,7 @@ Participant.defaultProps = {
 }
 
 Participant.propTypes = {
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   text: PropTypes.string.isRequired,
   color: PropTypes.string
 }

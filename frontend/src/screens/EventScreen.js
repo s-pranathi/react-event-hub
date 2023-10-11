@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { Row, Col, Image, Card, Button, ListGroup } from "react-bootstrap";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Row, Col, Image, Card, Button, ListGroup, Form } from "react-bootstrap";
 import axios from "axios";
 
 const EventScreen = () => {
   const params = useParams();
+  const [qty, setQty] = useState(1)
   const [event, setEvent] = useState({});
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -14,6 +17,10 @@ const EventScreen = () => {
     };
     fetchEvent();
   }, []);
+
+  const addToCartHandler = () => {
+     navigate(`/cart/${params.id}?qty=${qty}`)
+  }
 
   return (
     <>
@@ -52,11 +59,32 @@ const EventScreen = () => {
                   <Col>{event.countInStock > 0 ? "Available" : "Sold out"}</Col>
                 </Row>
               </ListGroup.Item>
+              {event.countInStock > 0 && (
+              <ListGroup.Item>
+                <Row>
+                  <Col>Qty</Col>
+                  <Col>
+                    <Form.Control
+                      as='select'
+                      value={qty}
+                      onChange={e => setQty(e.target.value)}>
+                        {
+                          [...Array(event.countInStock).keys()].map(x => (
+                            <option key={x+1} value={x+1}>{x+1}</option>
+                          ))
+                        }
+                      </Form.Control>
+                  </Col>
+                </Row>
+              </ListGroup.Item>
+              )}
               <ListGroup.Item>
                 <Button
                   className="btn-block"
                   type="button"
                   disabled={event.countInStock === 0}
+                  onClick={addToCartHandler}
+
                 >
                   Add To Cart
                 </Button>
