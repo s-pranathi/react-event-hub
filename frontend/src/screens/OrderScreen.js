@@ -10,6 +10,7 @@ import {
   getPaypalKey,
   payOrder,
 } from "../actions/orderActions";
+import {clearCart} from '../actions/cartActions'
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = () => {
@@ -42,6 +43,7 @@ const OrderScreen = () => {
     if (!order || successPay) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
+      dispatch(clearCart())
     }
   }, [dispatch, orderId, successPay, order]);
 
