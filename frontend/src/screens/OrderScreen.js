@@ -10,7 +10,7 @@ import {
   getPaypalKey,
   payOrder,
 } from "../actions/orderActions";
-import {clearCart} from '../actions/cartActions'
+import { clearCart } from "../actions/cartActions";
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = () => {
@@ -26,7 +26,17 @@ const OrderScreen = () => {
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay, paypalkey } = orderPay;
 
-  if (!loading) {
+  useEffect(() => {
+    dispatch(getPaypalKey());
+
+    if (!order || successPay) {
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch(getOrderDetails(orderId));
+      dispatch(clearCart());
+    }
+  }, [dispatch, orderId, successPay, order]);
+
+  if (!loading && order) {
     //   Calculate prices
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2);
@@ -37,27 +47,19 @@ const OrderScreen = () => {
     );
   }
 
-  useEffect(() => {
-    dispatch(getPaypalKey());
-
-    if (!order || successPay) {
-      dispatch({ type: ORDER_PAY_RESET });
-      dispatch(getOrderDetails(orderId));
-      dispatch(clearCart())
-    }
-  }, [dispatch, orderId, successPay, order]);
-
   return loading ? (
     <Loader />
   ) : error ? (
     <Message variant="danger">{error}</Message>
-  ) : (
+  ) : order ? (
     <>
+      <Link className="btn btn-light my-3" to="/my-orders">
+        Go to list of orders
+      </Link>
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
-
             <ListGroup.Item>
               <h2>Payment Method</h2>
               <p>
@@ -162,11 +164,11 @@ const OrderScreen = () => {
                           // Your code here after capture the order
                           var paymentResult = {
                             id: data.paymentID,
-                            status: 'Paid',
+                            status: "Paid",
                             update_time: new Date().getDate().toString(),
-                            email_address: order.user.email
-                          }
-                          dispatch(payOrder(orderId, paymentResult))
+                            email_address: order.user.email,
+                          };
+                          dispatch(payOrder(orderId, paymentResult));
                         });
                       }}
                     />
@@ -178,6 +180,8 @@ const OrderScreen = () => {
         </Col>
       </Row>
     </>
+  ) : (
+    <Loader />
   );
 };
 

@@ -19,7 +19,7 @@ const Header = () => {
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/"> My Store</Navbar.Brand>
+          <Navbar.Brand href="/"> EVENT HUB</Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className='ms-auto'>
@@ -30,6 +30,9 @@ const Header = () => {
                  <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/my-orders'>
+                    <NavDropdown.Item>My Orders</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout

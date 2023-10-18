@@ -2,12 +2,12 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {
   eventDetailsReducer,
   eventListReducer,
-} from "./reducers/eventReducers";i
+} from "./reducers/eventReducers";
 import { userLoginReducer,
   userDetailsReducer,
   userUpdateProfileReducer,userRegisterReducer  } from './reducers/userReducers'
   import { cartReducer } from "./reducers/cartReducers";
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from "./reducers/orderReducers";
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer, ordersReducer } from "./reducers/orderReducers";
 
 const rootReducer = combineReducers({
   eventList: eventListReducer,
@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderPay: orderPayReducer,
   orderDetails: orderDetailsReducer,
+  orders: ordersReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer
 });

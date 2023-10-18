@@ -9,7 +9,11 @@ import {
     ORDER_PAY_FAIL,
     ORDER_PAY_SUCCESS,
     ORDER_PAY_RESET,
-    PAYPAL_KEY,     
+    PAYPAL_KEY,
+    ORDERS_REQUEST,
+    ORDERS_SUCCESS,
+    ORDERS_FAIL,
+    ORDER_DETAILS_RESET,     
   } from '../constants/orderConstants'
 
   export const orderCreateReducer = (state = {}, action) => {
@@ -83,7 +87,33 @@ import {
           loading: false,
           error: action.payload,
         }
+      case ORDER_DETAILS_RESET:
+        return {}
       default:
         return state
     }
   } 
+
+  export const ordersReducer = (state = {}, action) => {
+    switch (action.type) {
+      case ORDERS_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        }
+      case ORDERS_SUCCESS:
+        return {
+          loading: false,
+          order: action.payload,
+        }
+      case ORDERS_FAIL:
+        return {
+          loading: false,
+          error: action.payload,
+        }
+      default:
+        return state
+    }
+
+
+  }
