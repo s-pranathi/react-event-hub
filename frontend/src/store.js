@@ -3,11 +3,20 @@ import {
   eventDetailsReducer,
   eventListReducer,
 } from "./reducers/eventReducers";
-import { userLoginReducer,
+import {
+  userLoginReducer,
   userDetailsReducer,
-  userUpdateProfileReducer,userRegisterReducer  } from './reducers/userReducers'
-  import { cartReducer } from "./reducers/cartReducers";
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer, ordersReducer } from "./reducers/orderReducers";
+  userUpdateProfileReducer,
+  userRegisterReducer,
+} from "./reducers/userReducers";
+import { cartReducer } from "./reducers/cartReducers";
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  ordersReducer,
+} from "./reducers/orderReducers";
+import { getCartItemsFromStorage } from "./utils/cartUtil";
 
 const rootReducer = combineReducers({
   eventList: eventListReducer,
@@ -20,16 +29,14 @@ const rootReducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orders: ordersReducer,
   userDetails: userDetailsReducer,
-  userUpdateProfile: userUpdateProfileReducer
+  userUpdateProfile: userUpdateProfileReducer,
 });
-
-const cartItemsFromStorage = localStorage.getItem("cartItems")
-  ? JSON.parse(localStorage.getItem("cartItems"))
-  : [];
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
+
+let cartItemsFromStorage = getCartItemsFromStorage(userInfoFromStorage);
 
 const paymentMethodFromStorage = localStorage.getItem("paymentMethod")
   ? JSON.parse(localStorage.getItem("paymentMethod"))

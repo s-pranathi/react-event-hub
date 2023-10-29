@@ -6,9 +6,6 @@ import { Row, Col, ListGroup } from "react-bootstrap";
 import { ORDER_DETAILS_RESET } from "../constants/orderConstants";
 
 const MyOrdersScreen = () => {
-//   const userLogin = useSelector((state) => state.userLogin);
-//   const { userInfo } = userLogin;
-
   const orders = useSelector((state) => state.orders);
   const orders_list = orders.order;
 
@@ -18,7 +15,7 @@ const MyOrdersScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({type: ORDER_DETAILS_RESET})
+    dispatch({ type: ORDER_DETAILS_RESET });
     if (!user.name) {
       dispatch(getOrders());
     }
