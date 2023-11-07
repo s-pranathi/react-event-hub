@@ -59,6 +59,12 @@ export const clearCart = () => (dispatch) =>{
   dispatch({
     type: CLEAR_CART
   })
-  localStorage.removeItem('cartItems')
+  const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+  if(userInfoFromStorage){
+    localStorage.removeItem(userInfoFromStorage._id)
+  }
+  
   localStorage.removeItem('paymentMethod')
 }

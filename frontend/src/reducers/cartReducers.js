@@ -42,10 +42,6 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         paymentMethod: "",
       };
     case LOGIN_CART_LOAD:
-      // return {
-      //   ...state,
-      //   cartItems: [...state.cartItems, ...getCartItemsFromStorage(action.payload)]
-      // };
       const cartItemsFromStorage = getCartItemsFromStorage(action.payload)
       let currCart;
       for(let item_index in cartItemsFromStorage){
